@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Flask / SQLAlchemy
+instance/
+*.db
+*.sqlite3
+
+# Environment variables (секреты)
+.env
+.env.*
+
+# Logs and temp files
+*.log
+*.pid
+*.swp
+*.bak
+*.tmp
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Uploads and avatars (ignore contents, keep folders)
+static/uploads/*
+!static/uploads/.gitkeep
+
+static/avatars/*
+!static/avatars/.gitkeep
