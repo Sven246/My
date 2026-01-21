@@ -25,3 +25,10 @@ class EditProfileForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     avatar = FileField('Новый аватар', validators=[FileAllowed(['jpg', 'png', 'jpeg'])])
     submit = SubmitField('Сохранить изменения')
+from flask_wtf import FlaskForm
+from wtforms import TextAreaField, SubmitField
+from wtforms.validators import DataRequired
+
+class CommentForm(FlaskForm):
+    body = TextAreaField('Комментарий', validators=[DataRequired()])
+    submit = SubmitField('Отправить')
