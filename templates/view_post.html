@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Пост{% endblock %}
+
+{% block content %}
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">{{ post.author.username }}</h5>
+        <p class="card-text">{{ post.body }}</p>
+        {% if post.image %}
+            <img src="{{ url_for('static', filename='uploads/' ~ post.image) }}" class="img-fluid rounded mt-2">
+        {% endif %}
+        <p class="text-muted mt-2">Опубликовано {{ post.timestamp.strftime('%d.%m.%Y %H:%M') }}</p>
+
+        <!-- Лайк -->
+        <form action="{{ url_for('like_post', post_id=post.id) }}" method="post" class="d-inline">
+            {{ csrf_token() }}
+            <button type="submit" class="btn btn-outline-danger btn-sm">
+                ❤️ {{ post.likes.count() }}
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Комментарии -->
+<h5 class="mb-3">Комментарии</h5>
+<ul class="list-group mb-4">
+    {% for comment in comments %}
+        <li class="list-group-item">
+            <strong>{{ comment.author.username }}</strong>:
+            {{ comment.body }}
+            <span class="text-muted float-end">{{ comment.timestamp.strftime('%d.%m.%Y %H:%M') }}</span>
+        </li>
+    {% else %}
+        <li class="list-group-item text-muted">Комментариев пока нет.</li>
+    {% endfor %}
+</ul>
+
+<!-- Форма комментария -->
+{% if current_user.is_authenticated %}
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.body.label(class="form-label") }}
+            {{ form.body(class="form-control", rows=3) }}
+        </div>
+        <div class="mb-3">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+{% else %}
+    <p><a href="{{ url_for('login') }}">Войдите</a>, чтобы оставить комментарий.</p>
+{% endif %}
+{% endblock %}
