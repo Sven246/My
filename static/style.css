@@ -1,0 +1,28 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.card {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    border: none;
+}
+
+.card-body {
+    padding: 1rem 1.25rem;
+}
+
+.btn {
+    border-radius: 6px;
+}
+
+.list-group-item {
+    font-size: 1rem;
+}
