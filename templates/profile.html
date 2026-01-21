@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Профиль {{ user.username }}{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Профиль: {{ user.username }}</h2>
+
+<div class="mb-4 d-flex align-items-center">
+    {% if user.avatar %}
+        <img src="{{ url_for('static', filename='avatars/' ~ user.avatar) }}" class="avatar me-3">
+    {% else %}
+        <img src="{{ url_for('static', filename='avatars/default.png') }}" class="avatar me-3">
+    {% endif %}
+    <div>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        {% if current_user.id == user.id %}
+            <a href="{{ url_for('edit_profile') }}" class="btn btn-sm btn-outline-secondary">Редактировать профиль</a>
+        {% endif %}
+    </div>
+</div>
+
+<h4>Посты пользователя</h4>
+{% for post
