@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Статистика{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Статистика</h2>
+<ul class="list-group">
+    <li class="list-group-item">Всего пользователей: {{ stats.total_users }}</li>
+    <li class="list-group-item">Всего постов: {{ stats.total_posts }}</li>
+    <li class="list-group-item">Активных авторов: {{ stats.active_users }}</li>
+    <li class="list-group-item">Забаненных пользователей: {{ stats.banned_users }}</li>
+    <li class="list-group-item">Постов за 7 дней: {{ stats.recent_posts }}</li>
+</ul>
+{% endblock %}
