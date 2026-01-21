@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Новый пост{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Создать пост</h2>
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+        {{ form.body.label(class="form-label") }}
+        {{ form.body(class="form-control", rows=4) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.image.label(class="form-label") }}
+        {{ form.image(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.submit(class="btn btn-success") }}
+    </div>
+</form>
+{% endblock %}
